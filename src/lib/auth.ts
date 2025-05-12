@@ -51,15 +51,37 @@ export interface AuthResult<T = void> {
  */
 export async function signInWithPassword(credentials: LoginCredentials): Promise<AuthResult<Session>> {
   try {
+    // Supabase認証を使用
     const { data, error } = await supabase.auth.signInWithPassword({
       email: credentials.email,
       password: credentials.password,
     });
 
+    // Supabase認証が成功
+    if (!error && data.session) {
+      return {
+        data: data.session,
+        error: null,
+        success: true,
+      };
+    }
+
+    // Supabase認証失敗時に簡易認証をフォールバックとして使う場合（開発用）
+    // if (process.env.NODE_ENV === 'development') {
+    //   if (credentials.email === "admin@example.com" && credentials.password === "muscleclub2024") {
+    //     // 開発環境用の簡易認証ロジック
+    //     return {
+    //       data: null, 
+    //       error: null,
+    //       success: true
+    //     };
+    //   }
+    // }
+
     return {
-      data: data.session,
+      data: null,
       error,
-      success: !error,
+      success: false,
     };
   } catch (error) {
     console.error('Sign in error:', error);

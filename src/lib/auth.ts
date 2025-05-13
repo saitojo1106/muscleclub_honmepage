@@ -66,18 +66,6 @@ export async function signInWithPassword(credentials: LoginCredentials): Promise
       };
     }
 
-    // Supabase認証失敗時に簡易認証をフォールバックとして使う場合（開発用）
-    // if (process.env.NODE_ENV === 'development') {
-    //   if (credentials.email === "admin@example.com" && credentials.password === "muscleclub2024") {
-    //     // 開発環境用の簡易認証ロジック
-    //     return {
-    //       data: null, 
-    //       error: null,
-    //       success: true
-    //     };
-    //   }
-    // }
-
     return {
       data: null,
       error,

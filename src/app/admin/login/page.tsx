@@ -19,12 +19,16 @@ export default function LoginPage() {
     setLoading(true);
     
     try {
-      const { success, error } = await signInWithPassword(email, password);
+      // 新しい関数を使用
+      const { success, error } = await signInWithPassword({
+        email: email,
+        password: password
+      });
       
       if (success) {
         router.push('/admin/dashboard');
       } else {
-        setError(error || 'ログインに失敗しました');
+        setError(error?.message || 'ログインに失敗しました');
       }
     } catch (err) {
       console.error('ログインエラー:', err);

@@ -19,8 +19,8 @@ export interface Database {
           requirements: string | null
           fee: string | null
           image_url: string | null
-          created_at: string | null
-          updated_at: string | null
+          created_at: string
+          updated_at: string
         }
         Insert: {
           id?: number
@@ -31,8 +31,8 @@ export interface Database {
           requirements?: string | null
           fee?: string | null
           image_url?: string | null
-          created_at?: string | null
-          updated_at?: string | null
+          created_at?: string
+          updated_at?: string
         }
         Update: {
           id?: number
@@ -43,52 +43,34 @@ export interface Database {
           requirements?: string | null
           fee?: string | null
           image_url?: string | null
-          created_at?: string | null
-          updated_at?: string | null
+          created_at?: string
+          updated_at?: string
         }
       }
       members: {
         Row: {
           id: number
           name: string
-          position: string
-          year: string | null
-          speciality: string | null
-          message: string | null
-          records: string | null
-          instagram: string | null
-          image: string | null
-          order_index: number | null
-          created_at: string | null
-          updated_at: string | null
+          role: string
+          bio: string
+          image_url: string | null
+          joined_year: number
         }
         Insert: {
           id?: number
           name: string
-          position: string
-          year?: string | null
-          speciality?: string | null
-          message?: string | null
-          records?: string | null
-          instagram?: string | null
-          image?: string | null
-          order_index?: number | null
-          created_at?: string | null
-          updated_at?: string | null
+          role: string
+          bio: string
+          image_url?: string | null
+          joined_year: number
         }
         Update: {
           id?: number
           name?: string
-          position?: string
-          year?: string | null
-          speciality?: string | null
-          message?: string | null
-          records?: string | null
-          instagram?: string | null
-          image?: string | null
-          order_index?: number | null
-          created_at?: string | null
-          updated_at?: string | null
+          role?: string
+          bio?: string
+          image_url?: string | null
+          joined_year?: number
         }
       }
     }
